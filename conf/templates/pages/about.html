@@ -1,12 +1,32 @@
 {% extends 'bases/base_index.html' %}
 
-{% block content %}
+{% block logo %}
+{% for change in changes %}
+<img src=" {{change.image.url}} " alt="">
+{% endfor %}
+{% endblock logo %}
 
+
+{% block navbar %}
+<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Special Dishes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% for dishes in dishess %}
+            <a class="dropdown-item" href="special-dishes.html"> {{dishes.name_plat}} </a>
+            {% endfor %}
+        </div>   
+</li>
+{% endblock navbar %}
+
+{% block content %}
+{% for about in abouts %}
 <section id="gtco-welcome" class="bg-white section-padding">
     <div class="container">
         <div class="section-content">
             <div class="row">
-                <div class="col-sm-5 img-bg d-flex shadow align-items-center justify-content-center justify-content-md-end img-2" style="background-image: url(/static/img/hero-2.jpg);">
+                <div class="col-sm-5 img-bg d-flex shadow align-items-center justify-content-center justify-content-md-end img-2" style="background-image: url(/static/img/hero-2.jpg) ;">
                     
                 </div>
                 <div class="col-sm-7 py-5 pl-md-0 pl-4">
@@ -15,31 +35,21 @@
                             About
                         </span>
                         <h2>
-                            Welcome to Resto
+                            {{about.title}}
                         </h2>
                     </div>
                     <div class="pl-lg-5 ml-md-5">
-                        <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                        <p> {{about.description}} </p>
                         <h3 class="mt-5">Special Recipe</h3>
                         <div class="row">
+                            {% for recipe in recipes %}
                             <div class="col-4">
                                 <a href="#" class="thumb-menu">
-                                    <img class="img-fluid img-cover" src="/static/img/hero-1.jpg" />
-                                    <h6>Australian Organic Beef</h6>
+                                    <img class="img-fluid img-cover" src=" {{recipe.image.url}} " />
+                                    <h6> {{recipe.description}} </h6>
                                 </a>
                             </div>
-                            <div class="col-4">
-                                <a href="#" class="thumb-menu">
-                                    <img class="img-fluid img-cover" src="/static/img/hero-1.jpg" />
-                                    <h6>Australian Organic Beef</h6>
-                                </a>
-                            </div>
-                            <div class="col-4">
-                                <a href="#" class="thumb-menu">
-                                    <img class="img-fluid img-cover" src="/static/img/hero-1.jpg"/>
-                                    <h6>Australian Organic Beef</h6>
-                                </a>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -47,4 +57,30 @@
         </div>
     </div>
 </section>
+{% endfor %}
 {% endblock content %}
+
+
+
+{% block footer %}
+{% for change in changes %}
+<div class="col-lg-4">
+        <div class="footer-widget pr-lg-5 pr-0">
+           <img src=" {{change.image.url}} " class="img-fluid footer-logo mb-3" alt="">
+            <p> {{change.description}} </p>
+            <nav class="nav nav-mastfoot justify-content-start">
+               <a class="nav-link" href="#">
+                   <i class="fab fa-facebook-f"></i>
+               </a>
+               <a class="nav-link" href="#">
+                   <i class="fab fa-twitter"></i>
+               </a>
+               <a class="nav-link" href="#">
+                   <i class="fab fa-instagram"></i>
+               </a>
+           </nav>
+        </div>
+        
+</div>
+{% endfor %}
+{% endblock footer %} 

@@ -21,7 +21,10 @@ class JobAdmin(admin.ModelAdmin):
     
 @admin.register(Chef) 
 class ChefAdmin(admin.ModelAdmin):
-    list_display = ('name', 'image', 'date_add', 'date_upd', 'statut')       
-
+    list_display = ('name', 'image', 'date_add', 'date_upd', 'statut')    
+    
+@admin.register(Change)
+class ChangeAdmin(admin.ModelAdmin):
+    list_display = ('description', 'image', 'date_add', 'date_upd', 'statut' )
 
 # Register your models here.

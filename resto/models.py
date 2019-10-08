@@ -58,5 +58,11 @@ class Chef(models.Model):
     
     def __str__(self):
         return self.name
-# Create your models here.
+    
 
+class Change(models.Model):
+    description = models.TextField()
+    image = models.ImageField(upload_to='media')
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_upd = models.DateTimeField(auto_now=True)
+    statut =  models.BooleanField(default=True) 

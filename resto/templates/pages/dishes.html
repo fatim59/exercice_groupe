@@ -1,7 +1,26 @@
 {% extends 'bases/base_index.html' %}
 
-{% block content %}
 
+{% block logo %}
+{% for change in changes %}
+<img src=" {{change.image.url}} " alt="">
+{% endfor %}
+{% endblock logo %}
+
+{% block navbar %}
+<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Special Dishes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% for dishes in dishess %}
+            <a class="dropdown-item" href="special-dishes.html"> {{dishes.name_plat}} </a>
+            {% endfor %}
+        </div>   
+</li>
+{% endblock navbar %}
+
+{% block content %}
 <section id="gtco-special-dishes" class="bg-grey section-padding">
         <div class="container">
             <div class="section-content">
@@ -52,7 +71,28 @@
                  {% endfor %}
             </div>
         </div>
-    </section>
-    
-
+</section>
 {% endblock content %}
+
+{% block footer %}
+{% for change in changes %}
+<div class="col-lg-4">
+        <div class="footer-widget pr-lg-5 pr-0">
+           <img src=" {{change.image.url}} " class="img-fluid footer-logo mb-3" alt="">
+            <p> {{change.description}} </p>
+            <nav class="nav nav-mastfoot justify-content-start">
+               <a class="nav-link" href="#">
+                   <i class="fab fa-facebook-f"></i>
+               </a>
+               <a class="nav-link" href="#">
+                   <i class="fab fa-twitter"></i>
+               </a>
+               <a class="nav-link" href="#">
+                   <i class="fab fa-instagram"></i>
+               </a>
+           </nav>
+        </div>
+        
+</div>
+{% endfor %}
+{% endblock footer %} 
