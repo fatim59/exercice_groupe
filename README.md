@@ -63,6 +63,50 @@ class Chef(models.Model):
     Job_id = models.ForeignKey(Job, on_delete= models.CASCADE, related_name='Job_chef')
     
     
+    
+    
+    
+    
+   les models de conf
+   #l'image la description en pas du welcome sur la page about
+   class About(models.Model):
+   
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    image = models.ImageField(upload_to='media')
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_upd = models.DateTimeField(auto_now=True)
+    statut = models.BooleanField(default=True)
+    
+    #les specialité sur la mm page
+class Recipe(models.Model):
+
+    description = models.TextField()
+    image = models.ImageField(upload_to='media')
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_upd = models.DateTimeField(auto_now=True)
+    statut = models.BooleanField(default=True)
+# Create your models here.
+
+#pour les logo de la page 
+class Change(models.Model):
+
+    description = models.TextField()
+    image = models.ImageField(upload_to='media')
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_upd = models.DateTimeField(auto_now=True)
+    statut =  models.BooleanField(default=True) 
+    
+#le dishes ici affiche les menu au niveau de la navbar le dropdown special, il affiche les differents menu du singles_dishes de l'appli resto ,donc la class dishes permet de mettre le nom des different menu de single dishes et de l'afficher au niveau de la navbar
+class Dishes(models.Model):
+
+    name_plat = models.CharField(max_length=250)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_upd = models.DateTimeField(auto_now=True)  
+    statut =  models.BooleanField(default=True) 
+   
+    
+    
     def __str__(self):
         return self.name
     
